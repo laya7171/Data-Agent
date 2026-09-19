@@ -26,3 +26,6 @@ class JudgeSchema(BaseModel):
 class ETLAgentState(BaseModel):
     messasges = Annotated[list,add] = Field(..., description="List of messages exchanged during the ETL process.")
     user_question: str = Field(..., description="The question asked by the user.")
+
+
+    
