@@ -1,0 +1,89 @@
+Database Schema: SQLite
+
+Table: payments
+  Column: payment_id, Data Type: INTEGER
+  Column: ride_id, Data Type: INTEGER
+  Column: user_id, Data Type: INTEGER
+  Column: amount, Data Type: REAL
+  Column: payment_method, Data Type: TEXT
+  Column: payment_status, Data Type: TEXT
+  Column: transaction_id, Data Type: TEXT
+  Column: payment_time, Data Type: TEXT
+  Sample Data:
+    (1, 13960, 6945, 16.07, 'credit_card', 'completed', 'TXN-00000001', '2026-04-07 15:15:52')
+    (2, 1187, 5541, 47.01, 'debit_card', 'completed', 'TXN-00000002', '2025-10-07 14:56:33')
+    (3, 3719, 8738, 74.77, 'paypal', 'completed', 'TXN-00000003', '2026-01-14 16:19:32')
+    (4, 15623, 5455, 66.79, 'apple_pay', 'completed', 'TXN-00000004', '2026-03-20 08:37:33')
+    (5, 15032, 1129, 30.85, 'paypal', 'completed', 'TXN-00000005', '2026-04-29 18:56:19')
+
+Table: ratings
+  Column: rating_id, Data Type: INTEGER
+  Column: ride_id, Data Type: INTEGER
+  Column: rider_id, Data Type: INTEGER
+  Column: driver_id, Data Type: INTEGER
+  Column: rating, Data Type: INTEGER
+  Column: comment, Data Type: TEXT
+  Column: rated_at, Data Type: TEXT
+  Sample Data:
+    (1, 13870, 5833, 7667, 5, 'Could have been better', '2025-09-09 13:41:28')
+    (2, 2279, 1026, 3147, 4, 'Could have been better', '2026-06-02 23:39:31')
+    (3, 19701, 960, 2267, 5, 'Great ride', '2026-07-23 06:31:59')
+    (4, 860, 2999, 4679, 3, 'Average experience', '2026-04-23 04:57:28')
+    (5, 7868, 4277, 8698, 5, 'Average experience', '2025-10-09 06:15:35')
+
+Table: rides
+  Column: ride_id, Data Type: INTEGER
+  Column: rider_id, Data Type: INTEGER
+  Column: driver_id, Data Type: INTEGER
+  Column: requested_at, Data Type: TEXT
+  Column: pickup_time, Data Type: TEXT
+  Column: dropoff_time, Data Type: TEXT
+  Column: pickup_latitude, Data Type: REAL
+  Column: pickup_longitude, Data Type: REAL
+  Column: dropoff_latitude, Data Type: REAL
+  Column: dropoff_longitude, Data Type: REAL
+  Column: distance_km, Data Type: REAL
+  Column: fare, Data Type: REAL
+  Column: surge_multiplier, Data Type: REAL
+  Column: status, Data Type: TEXT
+  Column: cancellation_reason, Data Type: TEXT
+  Sample Data:
+    (1, 6166, 7514, '2026-02-27 20:13:30', None, None, 44.229291, -63.543162, 44.496423, -67.980735, 0.0, 0.0, 1.0, 'cancelled', 'driver_cancelled')
+    (2, 5074, 4936, '2025-12-26 08:26:37', '2025-12-26 08:34:37', '2025-12-26 08:59:37', 43.88127, -70.083206, 43.410488, -70.560855, 13.16, 52.17, 1.5, 'completed', None)
+    (3, 2969, 5849, '2025-07-03 07:58:26', '2025-07-03 08:02:26', '2025-07-03 09:02:26', 43.856247, -75.945737, 44.133943, -70.313959, 26.59, 70.53, 1.0, 'completed', None)
+    (4, 7932, 1030, '2025-03-01 04:50:04', '2025-03-01 05:03:04', '2025-03-01 05:40:04', 44.360329, -64.339011, 44.395041, -77.436515, 11.35, 42.98, 1.2, 'completed', None)
+    (5, 2468, 8856, '2026-07-09 07:45:41', '2026-07-09 07:51:41', '2026-07-09 08:36:41', 43.696089, -66.938775, 44.66913, -74.876163, 23.35, 59.61, 1.0, 'completed', None)
+
+Table: users
+  Column: user_id, Data Type: INTEGER
+  Column: first_name, Data Type: TEXT
+  Column: last_name, Data Type: TEXT
+  Column: email, Data Type: TEXT
+  Column: phone, Data Type: TEXT
+  Column: city, Data Type: TEXT
+  Column: province, Data Type: TEXT
+  Column: user_type, Data Type: TEXT
+  Column: signup_date, Data Type: TEXT
+  Column: is_active, Data Type: INTEGER
+  Sample Data:
+    (1, 'Danielle', 'Johnson', 'user1@example.com', '+13567729816', 'Halifax', 'NS', 'rider', '2025-05-25', 'True')
+    (2, 'Joshua', 'Walker', 'user2@example.com', '+19222900764', 'Vancouver', 'BC', 'rider', '2025-05-04', 'True')
+    (3, 'Jill', 'Rhodes', 'user3@example.com', '+12900432998', 'Winnipeg', 'MB', 'rider', '2026-05-24', 'True')
+    (4, 'Patricia', 'Miller', 'user4@example.com', '+19812397600', 'Montreal', 'QC', 'rider', '2026-05-21', 'True')
+    (5, 'Robert', 'Johnson', 'user5@example.com', '+16892737056', 'Winnipeg', 'MB', 'rider', '2024-04-15', 'True')
+
+Table: vehicles
+  Column: vehicle_id, Data Type: INTEGER
+  Column: driver_id, Data Type: INTEGER
+  Column: make, Data Type: TEXT
+  Column: model, Data Type: TEXT
+  Column: year, Data Type: INTEGER
+  Column: license_plate, Data Type: TEXT
+  Column: color, Data Type: TEXT
+  Column: is_active, Data Type: INTEGER
+  Sample Data:
+    (1, 7, 'Honda', 'CR-V', 2024, 'OP331', 'Grey', 'True')
+    (2, 10, 'Hyundai', 'Sonata', 2026, 'WK520', 'Black', 'True')
+    (3, 19, 'Ford', 'Fusion', 2022, 'LI224', 'Black', 'True')
+    (4, 25, 'Toyota', 'RAV4', 2015, 'FN542', 'Black', 'True')
+    (5, 26, 'Hyundai', 'Sonata', 2016, 'CS875', 'Grey', 'True')
